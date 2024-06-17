@@ -26,7 +26,7 @@ SECRET_KEY = config('SECRET_KEY', default=None)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DJANGO_DEBUG', default=0, cast=bool)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://contentdive.onrender.com']
 
 # Application definition
 
