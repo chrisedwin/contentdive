@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<div class="welcome-area pt-120">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-10 col-xl-8">
+        <div class="welcome-content text-center">
+          <h2 data-aos="fade-up" data-aos-duration="750" data-aos-delay="300">Digital Content is trending now. Find content to watch</h2>
+          <p class="mb-4" data-aos="fade-up" data-aos-duration="750" data-aos-delay="500">It's crafted with the latest trend of design &amp; developed with all modern approaches. Personalized suggestions—discovered through the things you already love.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="divider"></div>
+<div class="discover-nft-wrapper bg-gray pt-120 pb-120">
+  <div class="container">
+    <div class="section-heading">
+      <h2 class="mb-0">Discover Content</h2>
+    </div>
+    <!--    Filtering   -->
+    <div class="row g-4 justify-content-between align-items-end">
+      <div class="col-12 col-sm-6 col-lg-3">
+        <select name="sort" class="form-control w-100" hx-get="/movies/" hx-target="#target-list-change">
+          {% for key, value in sorting_choices.items %}
+            <option {% if request.session.movie_sort_order == value %}selected{% endif %} value="{{ value }}">{{ key|title }}</option>
+          {% endfor %}
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="divider"></div>
+  <!-- Discover Filter Options-->
+  <div class="container">
+    <div class="row g-4 justify-content-center" id="target-list-change">
+      {% include 'movies/snippet/list.html' with object_list=object_list %}
+      <!-- Pagination  -->
+      {% include 'movies/snippet/pagination.html' with object_list=object_list %}
+    </div>
+  </div>
+</div>
+<div class="divider"></div>
+
+{% endblock %}

@@ -1,0 +1,56 @@
+{% load static %}
+{% load get_dict_val %}
+{% with my_ratings|get_dict_val:object.id  as current_rating %}
+<div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+<!-- Featured Card -->
+<div class="nft-card card border-0">
+  <div class="card-body">
+    <div class="img-wrap"><img src="{% static 'img/bg-img/13.jpg' %}" alt="">
+      <!-- Badge -->
+      <div class="badge bg-dark position-absolute"><img src="{% static 'img/core-img/fire.png' %}" alt="">{{ object.rating_avg }} ({{ object.rating_count }})</div>
+      <!-- Dropdown -->
+      <div class="dropdown">
+        <button class="btn dropdown-toggle rounded-pill shadow-sm" id="dvd987" type="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i></button>
+        <!-- Dropdown Menu -->
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dvd987">
+          <li><a class="dropdown-item" href="#"><i class="me-1 bi bi-share"></i>Share</a></li>
+          <li><a class="dropdown-item" href="#"><i class="me-1 bi bi-flag"></i>Report</a></li>
+          <li><a class="dropdown-item" href="#"><i class="me-1 bi bi-bookmark"></i>Bookmark</a></li>
+        </ul>
+      </div>
+    </div>
+    <!-- Others Info -->
+    <div class="row gx-2 align-items-center mt-3">
+      <div class="col-8"><span class="d-block fz-12">ID.({{ object.id }})</span></div>
+      <div class="col-4 text-end">
+        <button class="wishlist-btn" type="button"><i class="bi"></i></button>
+      </div>
+    </div>
+    <!-- Meta Info -->
+    <div class="row gx-2 align-items-center mt-2">
+      <div class="col-12">
+        <div class="name-info d-flex align-items-center">
+          <!-- <div class="author-img position-relative"><img class="shadow" src="img/bg-img/u1.jpg" alt=""><i class="bi bi-check position-absolute bg-success"></i></div> -->
+          <div class="name-author">
+            <a class="name d-block hover-primary fw-bold text-truncate" href="{{ object.get_absolute_url }}" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ object.title }}">{{ object.title }} {% if object.release_date %}<small>{{ object.release_date.year }}</small>{% endif %}</a>
+            <a class="author d-block fz-12 hover-primary text-truncate" href="{{ object.get_absolute_url }}">{{ object.overview }}</a>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="col-4">
+        <div class="price text-end"><span class="fz-12 d-block">Current Bid</span>
+          <h6 class="mb-0">0.861 ETH</h6>
+        </div>
+      </div> -->
+    </div>
+    <!-- Button -->
+    <div class="row gx-2 align-items-center mt-3">
+      <div class="col-6"><a class="btn btn-primary btn-sm rounded-1" href="{{ object.get_absolute_url }}">View</a></div>
+      <div class="col-6">
+        {% include 'ratings/snippet/rating-choices.html' with object_id=object.id current_rating=current_rating %}
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+{% endwith %}

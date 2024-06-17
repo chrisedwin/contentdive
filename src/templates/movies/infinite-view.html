@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!-- Breadcrumb -->
+<div class="breadcrumb-wrapper">
+  <div class="container">
+    <div class="breadcrumb-content">
+      <h2 class="breadcrumb-title">Movie Details</h2>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb justify-content-center">
+          <li class="breadcrumb-item"><a href="/movies/">Movies</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Movie Details</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+</div>
+<div class="divider"></div>
+{% load get_dict_val %}
+{% with my_ratings|get_dict_val:object.id  as current_rating %}
+{% include 'movies/snippet/infinite.html' with object=object skip=True %}
+{% endwith %}
+<div class="divider"></div>
+
+{% endblock %}

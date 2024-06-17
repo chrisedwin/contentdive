@@ -1,0 +1,35 @@
+{% load static %}
+<!-- Blog Details  -->
+<div class="blog-details-wrap">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-10">
+        <div class="text-center">
+          <h1 class="display-5 fw-bold mb-4">{{ object.title }}</h1>
+          <div class="post-date border border-2 border-info rounded px-2 py-1 d-inline-block fz-14">{{ object.release_date }}</div>
+        </div>
+        <div class="mb-5"></div>
+      </div>
+      <div class="col-12"><img class="mb-5" src="{% static 'img/bg-img/44.jpg' %}" alt="" data-action="zoom"></div>
+      <div class="col-12">
+        <h2 class="mb-3">Movie Overview.</h2>
+        <p class="mb-4">Rating Average {{ object.rating_avg }}</p>
+        <p class="mb-4">Rating Count ({{ object.rating_count }})</p>
+        <p class="mb-4">{{ object.overview }}</p>
+      </div>
+    </div>
+    <div class="row g-4 justify-content-between align-items-end">
+      <div class="col-12 col-sm-6 col-lg-3">
+        {% include 'ratings/snippet/rating-choices.html' with object_id=object.id current_rating=current_rating %}
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="border-top my-5"></div>
+  </div>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-sm-10 col-lg-8"></div>
+    </div>
+  </div>
+</div>

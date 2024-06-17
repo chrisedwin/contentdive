@@ -1,0 +1,42 @@
+{% load i18n %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="ContentDive - Recommender">
+    <!-- Title-->
+    <title>{% block head_title %}ContentDive - Recommender{% endblock head_title %}</title>
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="{% static 'img/core-img/fav.png' %}" type="image/x-icon">
+    <!-- All CSS Stylesheet-->
+    <link rel="stylesheet" href="{% static 'css/all-css-libraries.css' %}">
+    <!-- Core Stylesheet-->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="{% static 'js/htmx.min.js' %}"></script>
+  </head>
+  <body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
+    <!-- Preloader-->
+    <div class="preloader" id="preloader">
+      <div class="spinner-border text-primary" role="status"><span class="visually-hidden">Loading...</span></div>
+    </div>
+    {% include 'navbar.html' %}
+
+    {% block content %}
+
+    {% endblock %}
+
+    {% comment %} {% include 'help.html' %} {% endcomment %}
+    {% include 'theme.html' %}
+    {% include 'footer.html' %}
+
+    {% block extra_body %}
+    {% endblock extra_body %}
+
+    <!-- All JavaScript Files-->
+    <script src="{% static 'js/all-js-libraries.js' %}"></script>
+    <script src="{% static 'js/active.js' %}"></script>
+    <script src="{% static 'js/charts.js' %}"></script>
+  </body>
+</html>
