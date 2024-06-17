@@ -1,0 +1,14 @@
+jupyter
+numpy
+pandas
+Celery
+Django==4.2
+django-allauth
+django-celery-beat 
+django-celery-results
+django-htmx
+Faker
+python-decouple
+redis
+numpy
+scikit-surprise
