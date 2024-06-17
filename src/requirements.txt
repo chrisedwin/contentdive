@@ -12,3 +12,4 @@ python-decouple
 redis
 numpy
 scikit-surprise
+gunicorn
